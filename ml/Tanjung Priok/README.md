@@ -7,6 +7,7 @@ This model predicts whether tomorrow will be a flood or not and also predicts cl
 This model expected a 3-dimensional array as an input. The shape detail is (1, 60, 4) where 1 is the batch size, 60 is the time window size, and 4 is the number of features in an ordered sequence ([rainfall, temperature, windspeed, and humidity]). 
 
 ### Input example
+```python
 input = [[[12.3, 27.1,  4. , 84. ],
           [ 0. , 27.5,  4. , 82. ],
           [ 6.4, 28.8,  4. , 80. ],
@@ -15,6 +16,7 @@ input = [[[12.3, 27.1,  4. , 84. ],
           [ 0. , 27.9,  3. , 77. ],
           [ 2.5, 26. ,  4. , 89. ],
           [76. , 25.5,  2. , 88. ]]]
+```
 
 ## Model Architecture
 You can get the model by download it from this link https://drive.google.com/file/d/1tso-QAHX5-9kfHBJUsZiVGrKy4itXh85/view?usp=drive_link
