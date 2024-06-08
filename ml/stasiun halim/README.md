@@ -149,6 +149,6 @@ b) Climate Dataset (2922 rows x 4 columns) <br />
 ![image](https://github.com/Bangkit-Capstone-C241-PS310/flood-forecast/assets/160315000/b027132f-f7ac-4a3d-8fdf-a9d1a6a0de73)
 
 ### 3. Output Model
-Array with 2 index :
-a. First index : Flood
-b. Second index : Climate
+Array with 2 index : <br/>
+a. First index : Flood <br/>
+b. Second index : Climate <br/>
