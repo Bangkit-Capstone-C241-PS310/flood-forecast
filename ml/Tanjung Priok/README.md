@@ -17,6 +17,8 @@ input = [[[12.3, 27.1,  4. , 84. ],
           [76. , 25.5,  2. , 88. ]]]
 
 ## Model Architecture
+You can get the model by download it from this link https://drive.google.com/file/d/1tso-QAHX5-9kfHBJUsZiVGrKy4itXh85/view?usp=drive_link
+
 ![Priok Model Architecture](https://github.com/Bangkit-Capstone-C241-PS310/flood-forecast/assets/134376120/298aad06-f3b5-4b20-afec-0bd949753ac7)
 
 ## Model Output
