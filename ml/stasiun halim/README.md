@@ -148,6 +148,10 @@ b) Climate Dataset (2922 rows x 4 columns) <br />
 **Columns** : Climate factors [rataan_curah_hujan (mm), rataan_suhu(celsius), rataan_kecepatan_angin (m/s), rataan_kelembapan (%)] <br />
 ![image](https://github.com/Bangkit-Capstone-C241-PS310/flood-forecast/assets/160315000/b027132f-f7ac-4a3d-8fdf-a9d1a6a0de73)
 
+Data Climate dinormalisasi dengan standardscaler (https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler.get_metadata_routing). <br/>
+mean [671.30805172  27.58489886   2.94026866  76.04781218] <br/>
+sigma [2.25429939e+03 2.65036387e+00 1.51869000e+00 9.37052288e+00] <br/>
+
 ### 3. Output Model
 Array with 2 index : <br/>
 a. First index : Flood <br/>
