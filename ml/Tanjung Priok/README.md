@@ -29,7 +29,7 @@ Model predicted output will be an array where the first index is flood predictio
 ```python
 flood_prediction, climate_prediction = model.predict(input)
 ```
-The climate shape will have the same order as the input, such as [1412, 241, 0.1231, 4]
+The climate shape will have the same order as the input, such as [[1412, 241, 0.1231, 4]]
 
 the flood prediction will return an array like this
 [[1, 0 , 0.999, ..., 0.2]]
