@@ -1,22 +1,22 @@
 # Kemayoran Model
 
 ## Description
-Model ini mewakili Stasiun BMKG Kemayoran yang mengcover 100 kelurahan pada 2 kota, yaitu Jakarta Pusat & Jakarta Barat.
-
+Model ini mewakili Stasiun BMKG Kemayoran yang mengcover 100 kelurahan pada 2 kota, yaitu Jakarta Pusat & Jakarta Barat.</br>
 *File Notebook: model_kemayoran.ipynb*
 
 ## Model Architecture
-- **Branch 1**: Outputs Banjir predictions.
-- **Branch 2**: Outputs Iklim predictions.
+![image](https://github.com/Bangkit-Capstone-C241-PS310/flood-forecast/assets/99129519/74331f71-e9b8-4f9c-82ab-86f885f92b04)
+- **Y1_output**: Outputs Banjir predictions.
+- **Y2_output**: Outputs Iklim predictions.
 
 ## Dataset
-Model ini membutuhkan input berupa:
+Model ini membutuhkan input berupa:</br>
   - rataan_curah_hujan
   - rataan_suhu
   - rataan_kecepatan_angin
   - rataan_kelembapan
-
-*File Input: Kemayoran.xlsx*
+    
+[*File Input: Kemayoran.xlsx*](https://docs.google.com/spreadsheets/d/1knZoFp26nnfgEsRhnXqpkkOcJlG38Wxi/edit?usp=drive_link&ouid=105564966508947123497&rtpof=true&sd=true)
 
 ## Output Y1 (Predict Banjir)
 Output Y1 secara berurutan:
