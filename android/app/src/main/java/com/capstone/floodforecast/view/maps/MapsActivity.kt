@@ -1,4 +1,4 @@
-package com.capstone.floodforecast.view
+package com.capstone.floodforecast.view.maps
 
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity

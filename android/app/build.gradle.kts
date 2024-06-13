@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId = "com.capstone.floodforecast"
-        minSdk = 21
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -65,4 +65,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    // splash screen
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
 }
