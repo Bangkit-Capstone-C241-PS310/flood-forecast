@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Raincoat</string>
+    <string name="image_desc">Image Description\n</string>
+    <string name="author">Author\n</string>
+    <string name="date">Date</string>
+    <string name="description_detail"><![CDATA[Jakarta (ANTARA) - Badan Penanggulangan Bencana Daerah (BPBD) DKI Jakarta mencatat 16 RT mengalami banjir pada Sabtu pukul 06.00 WIB akibat hujan yang melanda sebagian wilayah.\n \n\"BPBD mencatat terjadi kenaikan genangan dari 12 RT menjadi 16 RT atau 0,052 persen dari 30.772 RT yang ada di seluruh DKI Jakarta,\" kata Kepala Pelaksana BPBD DKI Jakarta Isnawa Adji kepada wartawan di Jakarta, Sabtu.]]></string>
+    <string name="learn">Learn</string>
+    <string name="maps">Maps</string>
+    <string name="faq">FAQ</string>
 </resources>
