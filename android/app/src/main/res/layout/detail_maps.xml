@@ -12,7 +12,7 @@
         android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="High Risk"
+        android:text="@string/status_header"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
@@ -47,7 +47,7 @@
             android:id="@+id/last_updated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last updated May 28 2024, 18:00"
+            android:text="@string/time_updated"
             android:textColor="@android:color/darker_gray"
             tools:ignore="HardcodedText" />
     </LinearLayout>
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/location_container"
         android:layout_marginTop="8dp"
-        android:text="High chance of heavy rain and strong wind. Beware of flooding."
+        android:text="@string/description_detail_maps"
         android:textColor="@android:color/black"
         tools:ignore="HardcodedText" />
 
@@ -82,7 +82,7 @@
                 android:id="@+id/precipitation_levels"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100"
+                android:text="@string/precipitation_levels_number"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/holo_red_dark"
@@ -91,7 +91,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Precipitation levels"
+                android:text="@string/precipitation_levels"
                 android:textColor="@android:color/black"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
@@ -107,7 +107,7 @@
                 android:id="@+id/wind_speed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="85"
+                android:text="@string/wind_speed_numbers"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/holo_red_dark"
@@ -116,7 +116,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wind Speed"
+                android:text="@string/wind_speed"
                 android:textColor="@android:color/black"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
@@ -131,7 +131,7 @@
                 android:id="@+id/soil_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CT"
+                android:text="@string/soil_type_string"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/holo_red_dark"
@@ -140,7 +140,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Soil Type"
+                android:text="@string/soil_type"
                 android:textColor="@android:color/black"
                 tools:ignore="HardcodedText" />
         </LinearLayout>

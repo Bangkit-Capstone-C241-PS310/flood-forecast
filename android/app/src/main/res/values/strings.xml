@@ -9,4 +9,13 @@
     <string name="faq">FAQ</string>
     <string name="location_icon">Location Icon</string>
     <string name="location">Pejaten Timur</string>
+    <string name="status_header">High Risk</string>
+    <string name="time_updated">Last updated May 28 2024, 18:00</string>
+    <string name="description_detail_maps">High chance of heavy rain and strong wind. Beware of flooding.</string>
+    <string name="precipitation_levels_number">100</string>
+    <string name="precipitation_levels">Precipitation levels</string>
+    <string name="wind_speed_numbers">85</string>
+    <string name="wind_speed">Wind Speed</string>
+    <string name="soil_type">Soil Type</string>
+    <string name="soil_type_string">CT</string>
 </resources>
