@@ -1,4 +1,4 @@
-package com.capstone.floodforecast.view
+package com.capstone.floodforecast.view.maps
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
