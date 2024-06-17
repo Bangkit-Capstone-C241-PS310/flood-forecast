@@ -1,5 +1,5 @@
 ### 1. Model Architecture
-![architecture_model_halim](https://github.com/Bangkit-Capstone-C241-PS310/flood-forecast/assets/160315000/f573b129-b2dc-484f-990c-2c3636ec5a95) <br/>
+![model_halim_architecture_final](https://github.com/Bangkit-Capstone-C241-PS310/flood-forecast/assets/160315000/2a319455-5479-4cda-a98d-20ebbac7d722) <br/>
 Window size : 60 <br/>
 Data train : 80% <br/>
 Data validation : 10% <br/>
@@ -143,9 +143,9 @@ Tebet Timur <br />
 Tegal Parang <br />
 Ulujami <br />
 
-b) Climate Dataset (2922 rows x 4 columns) <br />
+b) Climate Dataset (2922 rows x 3 columns) <br />
 **Rows** : Total number of days from Januari 1st, 2013 until December 31st, 2020 <br />
-**Columns** : Climate factors [rataan_curah_hujan (mm), rataan_suhu(celsius), rataan_kecepatan_angin (m/s), rataan_kelembapan (%)] <br />
+**Columns** : Climate factors [rataan_curah_hujan (mm), rataan_suhu(celsius), rataan_kecepatan_angin (m/s)] <br />
 ![image](https://github.com/Bangkit-Capstone-C241-PS310/flood-forecast/assets/160315000/b027132f-f7ac-4a3d-8fdf-a9d1a6a0de73)
 
 Data Climate dinormalisasi dengan standardscaler (https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler.get_metadata_routing). <br/>

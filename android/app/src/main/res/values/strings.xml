@@ -18,4 +18,8 @@
     <string name="wind_speed">Wind Speed</string>
     <string name="soil_type">Soil Type</string>
     <string name="soil_type_string">CT</string>
+    <string name="question">Lorem ipsum dolor sit amet?</string>
+    <string name="answer">Answer</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="header_faq">We\'re here to help you!</string>
 </resources>
