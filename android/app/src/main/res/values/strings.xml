@@ -22,4 +22,7 @@
     <string name="answer">Answer</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="header_faq">We\'re here to help you!</string>
+    <string name="learn_text">Banjar yang menggenangi Jakarta pada waktu sore hari ini menyebabkan...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
