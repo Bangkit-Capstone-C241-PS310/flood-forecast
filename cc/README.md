@@ -1,4 +1,4 @@
-Github Repo here (separated from the rest): [Raincot Backend](https://github.com/eddoog/raincot-be)
+Github Repo here (separated from the rest): [Raincot Backend](https://github.com/eddoog/raincoat-be)
 
 # Tools Used
 
@@ -6,4 +6,4 @@ Github Repo here (separated from the rest): [Raincot Backend](https://github.com
 2. [tfgo](https://github.com/galeone/tfgo)
 3. Terraform
 4. Cloud Run
-5. Possibly, Pub/Sub
+5. MemoryStore (Redis)
