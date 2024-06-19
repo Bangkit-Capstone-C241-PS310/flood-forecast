@@ -1,6 +1,7 @@
 package com.capstone.floodforecast.view.maps
 
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -15,13 +16,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.capstone.floodforecast.databinding.FragmentMapsBinding
+import com.google.android.gms.maps.model.LatLngBounds
+import kotlinx.coroutines.launch
+import com.capstone.floodforecast.di.Injection
+import androidx.fragment.app.viewModels
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
 class MapsFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private var _binding: FragmentMapsBinding? = null
     private val binding get() = _binding!!
+    private val mapsViewModel: MapsViewModel by viewModels {
+        MapsViewModelFactory(Injection.provideRepository(requireContext()))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,15 +51,14 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Jakarta and move the camera
-        val jakarta = LatLng(-6.2, 106.8)
-        mMap.addMarker(MarkerOptions().position(jakarta).title("Marker in Jakarta"))
-        mMap.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(
-                jakarta, 11f
-            )
-        )
+        mMap.uiSettings.apply {
+            isZoomControlsEnabled = true
+            isCompassEnabled = true
+            isIndoorLevelPickerEnabled = true
+            isMapToolbarEnabled = true
+        }
 
+        setupObservers()
         getMyLocation()
     }
 
@@ -61,6 +70,46 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 getMyLocation()
             }
         }
+
+    private fun setupObservers() {
+        mapsViewModel.getLocations()
+
+        mapsViewModel.loading.observe(this) { loading ->
+            setLoadingState(loading)
+        }
+
+        mapsViewModel.locations.observe(this) { locations ->
+            lifecycleScope.launch {
+                if (locations != null) {
+                    val boundsBuilder = LatLngBounds.Builder()
+                    locations.forEach { data ->
+                        val latLng = data.lat?.let { data.lon?.let { it1 -> LatLng(it, it1) } }
+                        latLng?.let {
+                            val color = data.color?.let { hexColor ->
+                                val parsedColor = Color.parseColor(hexColor)
+                                val hsv = FloatArray(3)
+                                Color.colorToHSV(parsedColor, hsv)
+                                hsv[0]
+                            } ?: BitmapDescriptorFactory.HUE_RED
+
+                            mMap.addMarker(MarkerOptions()
+                                .position(it)
+                                .icon(BitmapDescriptorFactory.defaultMarker(color))
+                            )
+                            boundsBuilder.include(it)
+                        }
+                    }
+                }
+            }
+        }
+
+        val jakarta = LatLng(-6.25, 106.83)
+        mMap.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                jakarta, 11f
+            )
+        )
+    }
 
     private fun getMyLocation() {
         if (ContextCompat.checkSelfPermission(
@@ -77,5 +126,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setLoadingState(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

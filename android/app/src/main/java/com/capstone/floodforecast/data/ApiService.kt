@@ -4,8 +4,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("locations")
+    @GET("predict")
     suspend fun getLocations(
-        @Query("location") location : Int = 1,
     ): LocationResponse
 }
