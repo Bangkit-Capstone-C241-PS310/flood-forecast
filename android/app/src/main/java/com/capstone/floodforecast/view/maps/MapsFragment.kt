@@ -204,26 +204,22 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
 
     private fun showDetails(location: Location) {
         val riskCategory = when (location.value as Double) {
-            in 0.0..0.2 -> "Low Risk of Flooding"
-            in 0.2..0.5 -> "Medium Risk of Flooding"
-            in 0.5..0.8 -> "High Risk of Flooding"
-            in 0.8..1.0 -> "Very High Risk of Flooding"
-            else -> "Unknown Risk of Flooding"
+            in 0.0..0.2 -> R.string.low_risk
+            in 0.2..0.5 -> R.string.medium_risk
+            in 0.5..0.8 -> R.string.high_risk
+            in 0.8..1.0 -> R.string.very_high_risk
+            else -> R.string.unknown_risk
         }
 
-        val color = when (location.value) {
-            in 0.0..0.2 -> "#34EA35"
-            in 0.2..0.5 -> "#D5E933"
-            in 0.5..0.8 -> "#E6D838"
-            in 0.8..1.0 -> "#E93433"
-            else -> "#808080"
+        val colorInt = try {
+            Color.parseColor(location.color)
+        } catch (e: IllegalArgumentException) {
+            Color.parseColor("#808080")
         }
-
-        val colorInt = Color.parseColor(color)
 
         detailBinding.apply {
             locations.text = location.locationName
-            header.text = riskCategory
+            header.text = getString(riskCategory)
             lastUpdated.text = getString(R.string.time_updated, entryTime)
 
             val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_location)
