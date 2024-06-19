@@ -16,19 +16,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.lifecycleScope
 import com.capstone.floodforecast.databinding.FragmentMapsBinding
 import com.google.android.gms.maps.model.LatLngBounds
 import kotlinx.coroutines.launch
 import com.capstone.floodforecast.di.Injection
 import androidx.fragment.app.viewModels
+import com.capstone.floodforecast.data.Location
+import com.capstone.floodforecast.databinding.DetailMapsBinding
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.Marker
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
-class MapsFragment : Fragment(), OnMapReadyCallback {
+class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+
+    private lateinit var searchView: SearchView
 
     private lateinit var mMap: GoogleMap
     private var _binding: FragmentMapsBinding? = null
     private val binding get() = _binding!!
+    private var _detailBinding: DetailMapsBinding? = null
+    private val detailBinding get() = _detailBinding!!
     private val mapsViewModel: MapsViewModel by viewModels {
         MapsViewModelFactory(Injection.provideRepository(requireContext()))
     }
@@ -38,6 +51,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMapsBinding.inflate(inflater, container, false)
+        _detailBinding = DetailMapsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -46,6 +60,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        setupSearchView(view)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -58,6 +74,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             isMapToolbarEnabled = true
         }
 
+        mMap.setOnMarkerClickListener(this)
         setupObservers()
         getMyLocation()
     }
@@ -70,6 +87,42 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 getMyLocation()
             }
         }
+
+    private fun setupSearchView(view: View) {
+        searchView = view.findViewById(R.id.search_view)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    performSearch(it)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Implement live search if needed
+                return true
+            }
+        })
+    }
+
+    private fun performSearch(query: String) {
+        val foundLocation = mapsViewModel.locations.value?.find { it.locationName.equals(query, true) }
+
+        foundLocation?.let {
+            // Found the location, move camera to its position
+            val latLng = LatLng(it.lat ?: 0.0, it.lon ?: 0.0)
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
+            showDetails(it)
+        } ?: run {
+            // Handle case where location was not found
+            Toast.makeText(requireContext(), "Location '$query' not found", Toast.LENGTH_SHORT).show()
+        }
+
+        // Collapse the search view after search
+        searchView.clearFocus()
+        searchView.isIconified = true
+    }
+
 
     private fun setupObservers() {
         mapsViewModel.getLocations()
@@ -95,7 +148,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             mMap.addMarker(MarkerOptions()
                                 .position(it)
                                 .icon(BitmapDescriptorFactory.defaultMarker(color))
-                            )
+                                .title(data.locationName)
+                            )?.tag = data
                             boundsBuilder.include(it)
                         }
                     }
@@ -126,9 +180,61 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        _detailBinding = null
     }
 
     private fun setLoadingState(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    override fun onMarkerClick(marker: Marker): Boolean {
+        val location = marker.tag as? Location
+        location?.let {
+            showDetails(it)
+            animateCameraToMarker(marker)
+        }
+        return true
+    }
+
+    private fun animateCameraToMarker(marker: Marker) {
+        val cameraUpdate = CameraUpdateFactory.newLatLngZoom(marker.position, 15f)  // Adjust the zoom level as needed
+        mMap.animateCamera(cameraUpdate)
+    }
+
+    private fun showDetails(location: Location) {
+        val riskCategory = when (location.value as Double) {
+            in 0.0..0.2 -> "Low Risk of Flooding"
+            in 0.2..0.5 -> "Medium Risk of Flooding"
+            in 0.5..0.8 -> "High Risk of Flooding"
+            in 0.8..1.0 -> "Very High Risk of Flooding"
+            else -> "Unknown Risk of Flooding"
+        }
+
+        val color = when (location.value) {
+            in 0.0..0.2 -> "#34EA35"
+            in 0.2..0.5 -> "#D5E933"
+            in 0.5..0.8 -> "#E6D838"
+            in 0.8..1.0 -> "#E93433"
+            else -> "#808080"
+        }
+
+        val colorInt = Color.parseColor(color)
+
+        val currentDateTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+
+        detailBinding.apply {  // Assuming 'name' is a field in Location data class
+            locations.text = location.locationName
+            header.text = riskCategory
+            lastUpdated.text = getString(R.string.time_updated, currentDateTime)
+
+            val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_location)
+            drawable?.let {
+                DrawableCompat.setTint(it, colorInt)
+                locationIcon.setImageDrawable(it)
+            }
+        }
+        binding.detailContainer.removeAllViews()
+        binding.detailContainer.addView(detailBinding.root)
+        binding.detailContainer.visibility = View.VISIBLE
     }
 }

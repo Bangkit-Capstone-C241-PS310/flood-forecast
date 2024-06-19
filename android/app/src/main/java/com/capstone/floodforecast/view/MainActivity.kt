@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.capstone.floodforecast.R
 import com.capstone.floodforecast.view.faq.FaqFragment
+import com.capstone.floodforecast.view.learn.LearnFragment
 import com.capstone.floodforecast.view.maps.MapsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         navView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_learn -> {
+                    loadFragment(LearnFragment())
                     true
                 }
                 R.id.navigation_map -> {
@@ -38,6 +40,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+
+        if (savedInstanceState == null) {
+            loadFragment(MapsFragment())
+            navView.selectedItemId = R.id.navigation_map
         }
     }
 

@@ -86,4 +86,6 @@ dependencies {
     implementation("androidx.room:room-common:2.4.3")
     implementation("androidx.room:room-runtime:2.4.3")
     ksp("androidx.room:room-compiler:2.4.3")
+
+    implementation("androidx.cardview:cardview:1.0.0")
 }
