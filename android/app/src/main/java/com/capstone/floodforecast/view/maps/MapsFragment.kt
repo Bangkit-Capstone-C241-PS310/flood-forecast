@@ -36,6 +36,7 @@ import java.util.Locale
 class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private lateinit var searchView: SearchView
+    private lateinit var entryTime: String
 
     private lateinit var mMap: GoogleMap
     private var _binding: FragmentMapsBinding? = null
@@ -52,6 +53,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
     ): View {
         _binding = FragmentMapsBinding.inflate(inflater, container, false)
         _detailBinding = DetailMapsBinding.inflate(inflater, container, false)
+
+        entryTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+
         return binding.root
     }
 
@@ -99,7 +103,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Implement live search if needed
                 return true
             }
         })
@@ -110,16 +113,13 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
             ?: mapsViewModel.locations.value?.find { it.locationName?.contains(query, true) == true }
 
         foundLocation?.let {
-            // Found the location, move camera to its position
             val latLng = LatLng(it.lat ?: 0.0, it.lon ?: 0.0)
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
             showDetails(it)
         } ?: run {
-            // Handle case where location was not found
             Toast.makeText(requireContext(), "Location '$query' not found", Toast.LENGTH_SHORT).show()
         }
 
-        // Collapse the search view after search
         searchView.clearFocus()
         searchView.isIconified = true
     }
@@ -198,7 +198,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
     }
 
     private fun animateCameraToMarker(marker: Marker) {
-        val cameraUpdate = CameraUpdateFactory.newLatLngZoom(marker.position, 15f)  // Adjust the zoom level as needed
+        val cameraUpdate = CameraUpdateFactory.newLatLngZoom(marker.position, 15f)
         mMap.animateCamera(cameraUpdate)
     }
 
@@ -221,12 +221,10 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
 
         val colorInt = Color.parseColor(color)
 
-        val currentDateTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
-
         detailBinding.apply {
             locations.text = location.locationName
             header.text = riskCategory
-            lastUpdated.text = getString(R.string.time_updated, currentDateTime)
+            lastUpdated.text = getString(R.string.time_updated, entryTime)
 
             val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_location)
             drawable?.let {
