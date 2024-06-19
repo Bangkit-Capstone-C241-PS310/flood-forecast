@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Raincoat</string>
     <string name="image_desc">Image Description\n</string>
-    <string name="author">Author\n</string>
-    <string name="date">Date</string>
+    <string name="author">Raincoat Indonesia\n</string>
+    <string name="date">19 June 2024</string>
     <string name="description_detail"><![CDATA[Jakarta (ANTARA) - Badan Penanggulangan Bencana Daerah (BPBD) DKI Jakarta mencatat 16 RT mengalami banjir pada Sabtu pukul 06.00 WIB akibat hujan yang melanda sebagian wilayah.\n \n\"BPBD mencatat terjadi kenaikan genangan dari 12 RT menjadi 16 RT atau 0,052 persen dari 30.772 RT yang ada di seluruh DKI Jakarta,\" kata Kepala Pelaksana BPBD DKI Jakarta Isnawa Adji kepada wartawan di Jakarta, Sabtu.]]></string>
     <string name="learn">Learn</string>
     <string name="maps">Maps</string>
@@ -20,10 +20,12 @@
     <string name="soil_type_string">CT</string>
     <string name="question">Lorem ipsum dolor sit amet?</string>
     <string name="answer">Answer</string>
-    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="subheader">Below are some frequently asked questions (FAQs) about our flood-forecasting platform, Raincoat. These FAQs aim to provide a deeper understanding of the whys and hows behind Raincoat.</string>
     <string name="header_faq">We\'re here to help you!</string>
     <string name="learn_text">Banjar yang menggenangi Jakarta pada waktu sore hari ini menyebabkan…</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_maps">Search by Location Name</string>
+    <string name="question_faq">Question</string>
+    <string name="answer_faq">Answer</string>
 </resources>

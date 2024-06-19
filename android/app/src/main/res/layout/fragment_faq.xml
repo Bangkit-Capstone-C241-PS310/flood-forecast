@@ -1,166 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="393dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="@string/header_faq"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvSubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvHeader"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/subheader"
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tvHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/header_faq"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
-
-        <TextView
-            android:id="@+id/tvSubHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/lorem"
-            android:textSize="14sp"
-            android:layout_margin="16dp" />
-
-        <LinearLayout
-            android:id="@+id/faqItem1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/question1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/question"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:padding="8dp" />
-
-                <ImageButton
-                    android:id="@+id/expandButton1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/header_faq"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_expand"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/answer1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lorem"
-                android:visibility="gone"
-                android:padding="8dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/faqItem2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/question2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/question"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:padding="8dp" />
-
-                <ImageButton
-                    android:id="@+id/expandButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/header_faq"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_expand"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/answer2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lorem"
-                android:visibility="gone"
-                android:padding="8dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/faqItem3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/question3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/question"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:padding="8dp" />
-
-                <ImageButton
-                    android:id="@+id/expandButton3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/header_faq"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_expand"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/answer3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lorem"
-                android:visibility="gone"
-                android:padding="8dp" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-</ScrollView>
+        android:layout_below="@id/tvSubHeader"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentBottom="true"
+        android:clipToPadding="false"
+        tools:listitem="@layout/faq_item" />
+</RelativeLayout>

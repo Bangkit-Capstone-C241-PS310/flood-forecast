@@ -7,9 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone.floodforecast.R
 
-data class LearnItem(val title: String, val author: String)
+data class LearnItem(val title: String, val author: String, val textArticle: String)
 
-class LearnAdapter(private val items: List<LearnItem>) : RecyclerView.Adapter<LearnAdapter.LearnViewHolder>() {
+class LearnAdapter(
+    private val items: List<LearnItem>,
+    private val itemClickListener: (LearnItem) -> Unit
+) : RecyclerView.Adapter<LearnAdapter.LearnViewHolder>() {
 
     class LearnViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.textViewTitle)
@@ -25,6 +28,7 @@ class LearnAdapter(private val items: List<LearnItem>) : RecyclerView.Adapter<Le
         val item = items[position]
         holder.title.text = item.title
         holder.author.text = item.author
+        holder.itemView.setOnClickListener { itemClickListener(item) }
     }
 
     override fun getItemCount(): Int {
