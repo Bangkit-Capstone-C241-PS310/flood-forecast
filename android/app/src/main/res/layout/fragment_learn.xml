@@ -4,23 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Search Bar -->
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:queryHint="Search here..."
-        android:iconifiedByDefault="false"
-        android:layout_margin="16dp" />
+        android:text="@string/learn_flood"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="25dp"/>
 
-    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/searchView"
+        android:layout_below="@id/textViewTitle"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="-5dp"
+        android:layout_marginTop="-10dp"
         android:layout_marginBottom="95dp"
         android:clipToPadding="false"
         android:padding="16dp"

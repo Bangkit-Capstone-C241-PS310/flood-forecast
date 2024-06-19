@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        navView.setOnNavigationItemSelectedListener { item ->
+        navView.setOnItemSelectedListener  { item ->
             when (item.itemId) {
                 R.id.navigation_learn -> {
                     loadFragment(LearnFragment())

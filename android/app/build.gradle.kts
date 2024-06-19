@@ -88,5 +88,10 @@ dependencies {
     implementation("androidx.room:room-runtime:2.4.3")
     ksp("androidx.room:room-compiler:2.4.3")
 
+    // bumptech
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    ksp("com.github.bumptech.glide:compiler:4.15.1")
+
+    // cardview
     implementation("androidx.cardview:cardview:1.0.0")
 }

@@ -20,7 +20,7 @@
     <string name="soil_type_string">CT</string>
     <string name="question">Lorem ipsum dolor sit amet?</string>
     <string name="answer">Answer</string>
-    <string name="subheader">Below are some frequently asked questions (FAQs) about our flood-forecasting platform, Raincoat. These FAQs aim to provide a deeper understanding of the whys and hows behind Raincoat.</string>
+    <string name="subheading">Below are some frequently asked questions (FAQs) about our flood-forecasting platform, Raincoat.</string>
     <string name="header_faq">We\'re here to help you!</string>
     <string name="learn_text">Banjar yang menggenangi Jakarta pada waktu sore hari ini menyebabkan…</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -32,4 +32,5 @@
     <string name="high_risk">High Risk of Flooding</string>
     <string name="very_high_risk">Very High Risk of Flooding</string>
     <string name="unknown_risk">Unknown Risk of Flooding</string>
+    <string name="learn_flood">Flood 101</string>
 </resources>

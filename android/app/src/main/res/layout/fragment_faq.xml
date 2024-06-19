@@ -9,10 +9,10 @@
         android:layout_width="393dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="25dp"
         android:text="@string/header_faq"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_below="@id/tvHeader"
         android:layout_marginTop="8dp"
         android:layout_gravity="center_horizontal"
-        android:text="@string/subheader"
+        android:text="@string/subheading"
         android:textAlignment="center"
         android:textSize="14sp" />
 
@@ -31,7 +31,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvSubHeader"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="95dp"
         android:layout_alignParentBottom="true"
         android:clipToPadding="false"
         tools:listitem="@layout/faq_item" />
