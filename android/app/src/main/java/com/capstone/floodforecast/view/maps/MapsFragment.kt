@@ -107,6 +107,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
 
     private fun performSearch(query: String) {
         val foundLocation = mapsViewModel.locations.value?.find { it.locationName.equals(query, true) }
+            ?: mapsViewModel.locations.value?.find { it.locationName?.contains(query, true) == true }
 
         foundLocation?.let {
             // Found the location, move camera to its position
@@ -157,7 +158,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
             }
         }
 
-        val jakarta = LatLng(-6.25, 106.83)
+        val jakarta = LatLng(-6.23, 106.83)
         mMap.animateCamera(
             CameraUpdateFactory.newLatLngZoom(
                 jakarta, 11f
@@ -222,7 +223,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
 
         val currentDateTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
 
-        detailBinding.apply {  // Assuming 'name' is a field in Location data class
+        detailBinding.apply {
             locations.text = location.locationName
             header.text = riskCategory
             lastUpdated.text = getString(R.string.time_updated, currentDateTime)
