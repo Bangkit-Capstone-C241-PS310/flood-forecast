@@ -56,15 +56,15 @@ jobs:
           jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks \
           -storepass ${{ secrets.KEYSTORE_PASSWORD }} \
           -keypass ${{ secrets.KEY_PASSWORD }} \
-          app/build/outputs/apk/release/app-release-unsigned.apk ${{ secrets.KEY_ALIAS }}
+          app/build/outputs/apk/release/app-release.apk ${{ secrets.KEY_ALIAS }}
 
       - name: Verify APK
-        run: jarsigner -verify -verbose -certs app/build/outputs/apk/release/app-release-unsigned.apk
+        run: jarsigner -verify -verbose -certs app/build/outputs/apk/release/app-release.apk
 
       - name: Zipalign APK
         run: |
           $ANDROID_HOME/build-tools/33.0.0/zipalign -v 4 \
-          app/build/outputs/apk/release/app-release-unsigned.apk \
+          app/build/outputs/apk/release/app-release.apk \
           app/build/outputs/apk/release/app-release-signed-aligned.apk
 
       - name: Get Version Name
