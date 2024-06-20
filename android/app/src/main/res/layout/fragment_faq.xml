@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvHeader"
         android:layout_marginTop="8dp"
+        android:paddingStart="13dp"
+        android:paddingEnd="13dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/subheading"
         android:textAlignment="center"

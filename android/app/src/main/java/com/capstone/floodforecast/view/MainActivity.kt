@@ -1,8 +1,10 @@
 package com.capstone.floodforecast.view
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -24,6 +26,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val nightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        if (nightMode == Configuration.UI_MODE_NIGHT_YES) {
+            navView.itemIconTintList = ContextCompat.getColorStateList(this, R.color.white);
+        } else {
+            navView.itemIconTintList = ContextCompat.getColorStateList(this, R.color.tab_color_selector);
+        }
+
         navView.setOnItemSelectedListener  { item ->
             when (item.itemId) {
                 R.id.navigation_learn -> {

@@ -9,4 +9,5 @@
     <color name="grey">#808080</color>
     <color name="transparent_black">#80000000</color>
     <color name="dark_grey">#1D1F24</color>
+    <color name="vector_fill_color">#000000</color>
 </resources>
