@@ -49,7 +49,7 @@ jobs:
         env:
           ENCODED_KEYSTORE: ${{ secrets.KEYSTORE }}
         run: |
-          echo $ENCODED_KEYSTORE | base64 -di > keystore.jks
+          echo $ENCODED_KEYSTORE | base64 -di > app/keystore.jks
 
       - name: Sign APK
         run: |
