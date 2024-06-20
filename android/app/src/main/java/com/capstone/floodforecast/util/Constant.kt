@@ -73,15 +73,15 @@ object Constant {
                     "Floods in Indonesia are a significant and complex issue that requires a comprehensive approach to prevention and mitigation. Understanding the causes, effects, and prevention strategies is crucial for mitigating the impact of floods in Indonesia. By working together, government, civil society, and individuals can reduce the risk of flooding and ensure a safer and more resilient future for the country.\n" +
                     "\n" +
                     "References\n" +
-                    "[1] Faradiba, F. (2020). The Impact of Climate Factors, Disaster, and Social Community in Rural Development. The Journal of Asian Finance, Economics and Business, 7(9), 707–717.\n" +
+                    "1. Faradiba, F. (2020). The Impact of Climate Factors, Disaster, and Social Community in Rural Development. The Journal of Asian Finance, Economics and Business, 7(9), 707–717.\n" +
                     "\n" +
-                    "[2] Muliaty, M. (2021). INDONESIA'S FLOODING ISSUES. Muliaty Lecturer, Politeknik Negeri Media Kreatif, Makassar, Indonesia.\n" +
+                    "2. Muliaty, M. (2021). INDONESIA'S FLOODING ISSUES. Muliaty Lecturer, Politeknik Negeri Media Kreatif, Makassar, Indonesia.\n" +
                     "\n" +
-                    "[3] Australian National University. (n.d.). The socio-economic impacts of floods on Jakarta.\n" +
+                    "3. Australian National University. (n.d.). The socio-economic impacts of floods on Jakarta.\n" +
                     "\n" +
-                    "[4] Jakarta Provincial Government. (n.d.). Jakarta Floods: Gov't Makes Emergency Responses, Flood Mitigation Efforts.\n" +
+                    "4. Jakarta Provincial Government. (n.d.). Jakarta Floods: Gov't Makes Emergency Responses, Flood Mitigation Efforts.\n" +
                     "\n" +
-                    "[5] Smart City Jakarta. (n.d.). Jakarta Provincial Government's Commitment to Prevent Flooding.\n",
+                    "5. Smart City Jakarta. (n.d.). Jakarta Provincial Government's Commitment to Prevent Flooding.\n",
             R.drawable.flood
         ),
         LearnItem(
