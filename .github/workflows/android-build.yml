@@ -46,16 +46,19 @@ jobs:
         id: get_version
         run: echo "VERSION_NAME=$(grep 'versionName' app/build.gradle.kts | awk '{print $3}' | tr -d '"')" >> $GITHUB_OUTPUT
 
+      - name: Rename APK
+        run: mv app/build/outputs/apk/release/app-release-unsigned.apk app/build/outputs/apk/release/${{ env.APP_NAME }}-v${{ steps.get_version.outputs.VERSION_NAME }}.apk
+
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
-          name: app-release
-          path: android/app/build/outputs/apk/release/app-release-unsigned.apk
+          name: ${{ env.APP_NAME }}-v${{ steps.get_version.outputs.VERSION_NAME }}
+          path: android/app/build/outputs/apk/release/${{ env.APP_NAME }}-v${{ steps.get_version.outputs.VERSION_NAME }}.apk
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: android/app/build/outputs/apk/release/app-release-unsigned.apk
+          files: android/app/build/outputs/apk/release/${{ env.APP_NAME }}-v${{ steps.get_version.outputs.VERSION_NAME }}.apk
           tag_name: v${{ steps.get_version.outputs.VERSION_NAME }}
           name: ${{ env.APP_NAME }} v${{ steps.get_version.outputs.VERSION_NAME }}
           draft: false
