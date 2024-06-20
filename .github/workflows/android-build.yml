@@ -42,12 +42,34 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleRelease
 
+      - name: Decode Keystore
+        env:
+          ENCODED_KEYSTORE: ${{ secrets.KEYSTORE }}
+        run: |
+          echo $ENCODED_KEYSTORE | base64 -di > keystore.jks
+
+      - name: Sign APK
+        run: |
+          jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks \
+          -storepass ${{ secrets.KEYSTORE_PASSWORD }} \
+          -keypass ${{ secrets.KEY_PASSWORD }} \
+          app/build/outputs/apk/release/app-release-unsigned.apk ${{ secrets.KEY_ALIAS }}
+
+      - name: Verify APK
+        run: jarsigner -verify -verbose -certs app/build/outputs/apk/release/app-release-unsigned.apk
+
+      - name: Zipalign APK
+        run: |
+          $ANDROID_HOME/build-tools/30.0.3/zipalign -v 4 \
+          app/build/outputs/apk/release/app-release-unsigned.apk \
+          app/build/outputs/apk/release/app-release-signed-aligned.apk
+
       - name: Get Version Name
         id: get_version
         run: echo "VERSION_NAME=$(grep 'versionName' app/build.gradle.kts | awk '{print $3}' | tr -d '"')" >> $GITHUB_OUTPUT
 
       - name: Rename APK
-        run: mv app/build/outputs/apk/release/app-release-unsigned.apk app/build/outputs/apk/release/${{ env.APP_NAME }}-v${{ steps.get_version.outputs.VERSION_NAME }}.apk
+        run: mv app/build/outputs/apk/release/app-release-signed-aligned.apk app/build/outputs/apk/release/${{ env.APP_NAME }}-v${{ steps.get_version.outputs.VERSION_NAME }}.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v3
