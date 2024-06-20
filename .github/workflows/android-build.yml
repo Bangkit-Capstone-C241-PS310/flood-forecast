@@ -50,12 +50,12 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: app-release
-          path: app/build/outputs/apk/release/app-release.apk
+          path: app/build/outputs/apk/release/app-release-unsigned.apk
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: app/build/outputs/apk/release/app-release.apk
+          files: app/build/outputs/apk/release/app-release-unsigned.apk
           tag_name: v${{ steps.get_version.outputs.VERSION_NAME }}
           name: ${{ env.APP_NAME }} v${{ steps.get_version.outputs.VERSION_NAME }}
           draft: false
