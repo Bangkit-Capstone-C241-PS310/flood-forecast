@@ -20,10 +20,10 @@
         android:enableOnBackInvokedCallback="true">
         <activity
             android:name=".view.MainActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".view.learn.DetailActivity"
-            android:exported="false" />
+            android:exported="true" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
@@ -39,7 +39,7 @@
         </activity>
         <activity
             android:name=".view.maps.MapsFragment"
-            android:exported="false" />
+            android:exported="true" />
     </application>
 
 </manifest>
