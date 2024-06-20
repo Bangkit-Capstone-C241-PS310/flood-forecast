@@ -30,6 +30,9 @@ jobs:
           distribution: "adopt"
           java-version: "21"
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
       - name: Create local.properties
         run: echo "MAPS_API_KEY=${{ secrets.MAPS_API_KEY }}" > local.properties
 
@@ -60,7 +63,7 @@ jobs:
 
       - name: Zipalign APK
         run: |
-          $ANDROID_HOME/build-tools/30.0.3/zipalign -v 4 \
+          $ANDROID_HOME/build-tools/33.0.0/zipalign -v 4 \
           app/build/outputs/apk/release/app-release-unsigned.apk \
           app/build/outputs/apk/release/app-release-signed-aligned.apk
 
