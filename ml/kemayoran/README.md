@@ -6,7 +6,7 @@ Model ini mewakili Stasiun BMKG Kemayoran yang mengcover 100 kelurahan pada 2 ko
 
 
 ## Model Architecture
-![image](https://github.com/Bangkit-Capstone-C241-PS310/flood-forecast/assets/99129519/74331f71-e9b8-4f9c-82ab-86f885f92b04)
+![image](https://github.com/Bangkit-Capstone-C241-PS310/flood-forecast/assets/99129519/0ee494bc-18aa-4c55-8f82-0cbc5681baa0)
 - **Y1_output**: Outputs Banjir predictions.
 - **Y2_output**: Outputs Iklim predictions.
 
@@ -15,7 +15,6 @@ Model ini membutuhkan input berupa:</br>
   - rataan_curah_hujan
   - rataan_suhu
   - rataan_kecepatan_angin
-  - rataan_kelembapan
     
 [*File Input: Kemayoran.xlsx*](https://docs.google.com/spreadsheets/d/1knZoFp26nnfgEsRhnXqpkkOcJlG38Wxi)
 
@@ -122,16 +121,11 @@ Output Y1 secara berurutan:
   99. Tambora
   100. Tanah Sereal
 
-*Threshold Y1 0.9999*
-
 0: Tidak Banjir
-
 1: Banjir
 
 ## Output Y2 (Predict Iklim)
-
 Output Y2 secara berurutan:
   1. rataan_curah_hujan
   2. rataan_suhu
   3. rataan_kecepatan_angin
-  4. rataan_kelembapan
