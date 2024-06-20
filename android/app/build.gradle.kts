@@ -50,6 +50,11 @@ android {
         viewBinding = true
         buildConfig = true
     }
+
+    lint {
+        baseline = file("lint-baseline.xml")
+        disable += "Instantiatable"
+    }
 }
 
 dependencies {
