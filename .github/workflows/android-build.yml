@@ -31,7 +31,7 @@ jobs:
           java-version: "21"
 
       - name: Create local.properties
-        run: echo "MAPS_API_KEY=${{ secrets.MAPS_API_KEY }}" > local.properties
+        run: echo "MAPS_API_KEY=${{ secrets.MAPS_API_KEY }}" > android/local.properties
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -53,22 +53,12 @@ jobs:
           path: app/build/outputs/apk/release/app-release.apk
 
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
+          files: app/build/outputs/apk/release/app-release.apk
           tag_name: v${{ steps.get_version.outputs.VERSION_NAME }}
-          release_name: ${{ env.APP_NAME }} v${{ steps.get_version.outputs.VERSION_NAME }}
+          name: ${{ env.APP_NAME }} v${{ steps.get_version.outputs.VERSION_NAME }}
           draft: false
           prerelease: false
-
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/apk/release/app-release.apk
-          asset_name: app-release.apk
-          asset_content_type: application/vnd.android.package-archive
